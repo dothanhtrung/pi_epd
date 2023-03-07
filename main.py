@@ -27,7 +27,7 @@ from waveshare_epd import epd3in7
 
 logging.basicConfig(level=logging.DEBUG)
 
-RSS_FEED = "https://backend.deviantart.com/rss.xml?type=deviation&q=pixel+1bit"
+RSS_FEED = "https://backend.deviantart.com/rss.xml?type=deviation&q=pixelart"
 XML_FILE = "/tmp/feed.xml"
 IMAGE = "/tmp/image.png"
 # IMAGE_BMP = "/tmp/image.bmp"
@@ -66,9 +66,10 @@ try:
             target_width = height * 12 / 7
             x = (width - target_width) / 2
             y = 0
-        img = img.crop(x, y, target_width, target_height)
+        img = img.crop((x, y, target_width, target_height))
         img = img.resize((480, 280))
-        img.save(IMAGE)
+        
+        # Convert to bitmap
         # ary = np.array(img)
         # # Split the three channels
         # r,g,b = np.split(ary,3,axis=2)
@@ -81,10 +82,8 @@ try:
         # bitmap = np.array(bitmap).reshape([ary.shape[0], ary.shape[1]])
         # bitmap = np.dot((bitmap > 128).astype(float),255)
         # im = Image.fromarray(bitmap.astype(np.uint8))
-        # im.save(IMAGE_BMP)
-
-        Himage = Image.open(IMAGE)
-        epd.display_4Gray(epd.getbuffer_4Gray(Himage))
+        
+        epd.display_4Gray(epd.getbuffer_4Gray(img))
         time.sleep(5)
 
         logging.info("Goto Sleep...")
