@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 # -*- coding:utf-8 -*-
+#
+# Copyright (c) 2023 Trung Do <dothanhtrung@pm.me>
 
 from PIL import Image, ImageDraw, ImageFont
 import traceback
