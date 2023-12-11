@@ -1,0 +1,12 @@
+[package]
+name = "pi_epd"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+epd-waveshare = { git = "https://github.com/caemor/epd-waveshare" }
+embedded-hal = { version = "1.0.0-rc.1" }
+linux-embedded-hal = { git = "https://github.com/rust-embedded/linux-embedded-hal" }
+embedded-graphics = { version = "0.8.1" }
